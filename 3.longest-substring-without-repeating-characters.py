@@ -8,17 +8,19 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         max_len = 0
-        ls = []
         head = 0
-        for curr, ss in enumerate(s):
+        ls = []
+        for ss in s:
             if ss not in ls:
                 ls.append(ss)
             elif ss in ls:
-                idx = ls.index(ss)
+                head = ls.index(ss)
                 temp = len(ls)
+                ls = ls[head+1:]
+                ls.append(ss)
                 if temp > max_len:
                     max_len = temp
-                ls = [ss]
+                
         temp = len(ls)
         if temp > max_len:
             max_len = temp
@@ -27,8 +29,3 @@ class Solution:
 
         
         
-# @lc code=end
-s = Solution()
-
-a = 'pwwkew'
-s.lengthOfLongestSubstring(a)
