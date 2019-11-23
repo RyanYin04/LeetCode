@@ -7,19 +7,28 @@
 # @lc code=start
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if len(s) <= 1:
-            return len(s)
-        else:
-            if s[0] == s[1]:
-                return lengthOfLongestSubstring(s[1:])
-            else:
-                return 
-        
-        return 
+        max_len = 0
+        ls = []
+        head = 0
+        for curr, ss in enumerate(s):
+            if ss not in ls:
+                ls.append(ss)
+            elif ss in ls:
+                idx = ls.index(ss)
+                temp = len(ls)
+                if temp > max_len:
+                    max_len = temp
+                ls = [ss]
+        temp = len(ls)
+        if temp > max_len:
+            max_len = temp
+        return max_len
+                
 
+        
         
 # @lc code=end
 s = Solution()
 
-a = 'abcabcbb'
+a = 'pwwkew'
 s.lengthOfLongestSubstring(a)
