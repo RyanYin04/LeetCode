@@ -16,14 +16,8 @@ class Solution:
         mid = (l1 + l2) //2
         judge = (l1 + l2) % 2 == 1
 
-        while i < l1 and j < l2 and k < mid:
-            if k == mid:
-                if judge:
-                    return ls[k]
-                else:
-                    return (ls[k] + ls[k-1]) / 2
-            
-            elif nums1[i] <= nums2[j]:
+        while i < l1 and j < l2 and k < mid:     
+            if nums1[i] <= nums2[j]:
                 ls.append(nums1[i])
                 i += 1
             else:
@@ -33,21 +27,11 @@ class Solution:
             k += 1 
         
         while i < l1 and k < mid:
-            if k == mid:
-                if judge:
-                    return ls[k]
-                else:
-                    return (ls[k] + ls[k-1]) / 2
             ls.append(nums1[i])
             i += 1
             k += 1
         
         while j < l2 and k < mid:
-            if k == mid:
-                if judge:
-                    return ls[k]
-                else:
-                    return (ls[k] + ls[k-1]) /2
             ls.append(nums2[j])
             j += 1
             k += 1
