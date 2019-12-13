@@ -9,6 +9,9 @@ treePath gives all the path from root to leaves.
 
 '''
 class teneryTree:
+    '''
+    Define tenery tree class.
+    '''
 
     def __init__(self,headNode):
         self.value = headNode
@@ -59,19 +62,19 @@ def treePath(tree:teneryTree, path, result):
 
     Return a lsit.
     '''
-    if not tree.getLeft()t:
+    if not tree.getLeft():
         ## This is leaf node
         ## Add the path to the result list.
-        result.append(path + '->'+chr(tree.getValue()))
+        result.append(path+chr(tree.getValue()))
 
     if tree.getLeft():
         ## This still is a parent node.
-        treePath(tree.getLeft(), path + '->' + chr(tree.getValue()), result)
-        treePath(tree.getMiddle(), path + '->' + chr(tree.getValue()), result)
-        treePath(tree.getRight(), path +'->' + chr(tree.getValue()), result)
+        treePath(tree.getLeft(), path + chr(tree.getValue()) , result)
+        treePath(tree.getMiddle(), path + chr(tree.getValue()), result)
+        treePath(tree.getRight(), path + chr(tree.getValue()), result)
     return result
 
-t2 = teneryTree(49)
+t2 = teneryTree(ord(' '))
 s = solution()
 s.allCombination(t2, '23')
 
