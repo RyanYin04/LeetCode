@@ -1,4 +1,4 @@
-def longestCommomPrefix(ls:list) -> str:
+def longestCommonPrefix(ls:list) -> str:
     lprf = ''
     l = len(ls)
     if l == 0:
@@ -6,7 +6,7 @@ def longestCommomPrefix(ls:list) -> str:
     for i, ss in enumerate(ls[0]):
         flag = 1
         for j in ls[1:]:
-            if ss != j[i] or i > len(j):
+            if i > len(j) - 1 or ss != j[i]:
                 flag = -1
                 break
         if flag == 1:
@@ -14,4 +14,3 @@ def longestCommomPrefix(ls:list) -> str:
         if flag == -1:
             break
     return lprf
-
