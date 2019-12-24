@@ -19,7 +19,6 @@ class Solution:
                 if idx == -len(nums):
                     nums.sort()
                     return None
-
             pivot = nums[idx - 1]
             pivotIdx = idx - 1
             while pivot < nums[idx] and idx <= -1:
