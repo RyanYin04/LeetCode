@@ -10,7 +10,7 @@ class Solution:
         s = s.replace(' ', '')
         idx = 0
         res = ''
-        if s[idx] == '+' or s[idx] == '-'
+        if s[idx] == '+' or s[idx] == '-':
             res += s[idx]
             idx += 1
         while ord(s[idx]) > 48 and ord(s[idx]) < 57:
