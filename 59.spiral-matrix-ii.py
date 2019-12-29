@@ -9,18 +9,46 @@ class Solution:
     def generateMatrix(self, n: int):
         if n == 0:
             return []
-        temp = [i for i in range(1, n**2 + 1)]
-        mat = [[], for i in range(n)]
-        
-        c = 0
-        while c <= n:
-            mat[0].append(temp[0])
-            temp.pop(0)
-            c += 1
-        
-        r = 1
-        while r <= n:
-            mat[r]
+        # Initialize the matrix:
+        mat = [[0] * n for i in range(n)]
+        # Start the filling process:
+        round = n//2 + n%2
+        i = 0
+        num = 1
+        while i <= round - 1:
+            # direction: Going right
+            c = i
+            while c < n - i:
+                mat[i][c] = num
+                num += 1
+                c += 1
+            
+            # direction: Going down
+            r = i + 1
+            while r < n - i:
+                mat[r][-i - 1] = num
+                num += 1
+                r += 1
+
+            # Direction: Going left
+            c = n - i - 2
+            while c >= i:
+                mat[-i - 1][c] = num
+                num += 1
+                c -= 1
+
+            # Direction: Going up
+            r = n - i - 2
+            while r > i:
+                mat[r][i] = num
+                num += 1
+                r -= 1
+
+            i += 1
+        return mat            
+
+
+
         
 # @lc code=end
 
