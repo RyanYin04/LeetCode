@@ -21,6 +21,8 @@ def lengthOfLastWord(s):
         return 0
     l = len(s) - 1
     res = 0
+    while s[l] == ' ':
+        l -= 1
     while l >= 0:
         if s[l] != ' ':
             res += 1
@@ -29,4 +31,4 @@ def lengthOfLastWord(s):
             break
     return res
 
-lengthOfLastWord('abcd')
+lengthOfLastWord('a bcd')
