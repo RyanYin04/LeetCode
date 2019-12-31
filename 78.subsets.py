@@ -11,8 +11,8 @@ class Solution:
         nums.sort()
         if nums == []:
             return []
-        elif len(nums) == 1:
-            return [nums]+[[]]
+        # elif len(nums) == 1:
+        #     return [nums]+[[]]
         res = []
         def callback(ls, path, res):
             if ls == []:
