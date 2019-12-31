@@ -19,7 +19,7 @@ class Solution:
                     pnt += 1
                     count += 1
                 else:
-                    
+        # 单指针：
         # if len(nums) <= 2:
         #     return len(nums)
         # currVal = nums[0]
