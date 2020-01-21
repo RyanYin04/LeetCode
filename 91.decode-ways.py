@@ -7,26 +7,45 @@
 # @lc code=start
 class Solution:
     def numDecodings(self, s: str) -> int:
-        if len(s) == 0 or s[0] == '0':
+        l = len(s)
+        dp = [0] * (l + 1)
+        if not s or s[0] == '0':
             return 0
-        if len(s) == 1:
-            if int(s) >= 1:
+        if l == 2:
+            if (s[0] >= '3' and s[1] > 0) or (s[1] >= '7' and s[0] == '2') or s[1] == '0':
                 return 1
-            else:
+            elif s[0] >= '3' and s[1] == '0':
                 return 0
-        if len(s) == 2:
-            if int(s) >= 27 or int(s) <= 10:
-                if int(s) <= 20 and int(s) > 9:
-                    return 1
-                if s[1] == '0' or int(s) <= 9:
-                    return 0
-                else:
-                    return 1
-            if int(s) < 27 and int(s) > 10:
+            else:
                 return 2
-            
-        return self.numDecodings(s[1:]) + self.numDecodings(s[2:]) * (int(s[0:2]) <= 26)
-        
+        dp[0] = 1
+        dp[1] = 1
+        for i in range(2, l + 1):
+            if s[i - 1] == '0':
+                if s[i - 2] == '2' or s[i - 2] == '1':
+                    dp[i] = dp[i-2]
+                else:
+                    return 0
+            else:
+                if s[i-2] == '1' or ('1' <= s[i - 1]<= '6' and s[i- 2] == '2'):
+                    dp[i] = dp[i-1] + dp[i- 2]
+                else:
+                    dp[i] = dp[i-1]
+        return dp[-1]
+        # 递归：
+        # if len(s) == 0 or s[0] == '0':
+        #     return 0
+        # if len(s) == 1:
+        #     return 1
+        # if len(s) == 2:
+        #     if int(s[0:2]) <= 26 :
+        #         return 1 + (int(s[0:2]) >= 11 )
+        #     else:
+        #         return 0
+        # return self.numDecodings(s[1:]) + self.numDecodings(s[2:]) * (int(s[0:2]) <= 26)
+
+
+   
 # @lc code=end
 s = Solution()
-s.numDecodings('27')
+s.numDecodings('223')
