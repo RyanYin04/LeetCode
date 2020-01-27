@@ -11,13 +11,6 @@ class Solution:
         dp = [0] * (l + 1)
         if not s or s[0] == '0':
             return 0
-        if l == 2:
-            if (s[0] >= '3' and s[1] > 0) or (s[1] >= '7' and s[0] == '2') or s[1] == '0':
-                return 1
-            elif s[0] >= '3' and s[1] == '0':
-                return 0
-            else:
-                return 2
         dp[0] = 1
         dp[1] = 1
         for i in range(2, l + 1):
